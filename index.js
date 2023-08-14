@@ -35,6 +35,16 @@ app.post("/add-product", async (req, res) => {
   }
 });
 
+app.get("/get-products", async (req, res) => {
+  try {
+    const products = await Product.find({});
+
+    res.status(200).json({ message: "success", products });
+  } catch (error) {
+    res.status(500).json({ message: "failure" });
+  }
+});
+
 app.get("/", function (req, res) {
   res.send("Hello World!");
 });
